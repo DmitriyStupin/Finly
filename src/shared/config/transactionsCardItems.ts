@@ -1,6 +1,6 @@
 import type { TransactionsItem } from '../types/transactions.ts';
 
-export const transactionsItems: TransactionsItem[] = [
+export const transactionsCardItems: TransactionsItem[] = [
   {
     id: 1,
     title: 'Текущий баланс',

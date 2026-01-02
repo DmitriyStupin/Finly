@@ -8,8 +8,8 @@
   --color-text: #111827;
   --color-text-secondary: #6B7280;
   --color-error: #EF4444;
-  --color-income: #10B981;
-  --color-expense: #F59E0B;
+  --color-income: linear-gradient(90deg,rgba(16, 185, 129, 1) 100%, rgba(0, 255, 166, 1) 0%);
+  --color-expense: linear-gradient(90deg,rgba(245, 158, 11, 1) 0%, rgba(255, 176, 41, 1) 100%);
   --color-border: #e5e5e5;
 
   --border-radius-xs: 3px;
