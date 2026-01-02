@@ -1,0 +1,33 @@
+@use "/src/styles/helpers/functions" as *;
+
+:root {
+  --color-bg: #F5F6FA;
+  --color-card-bg: #FFFFFF;
+  --color-primary: #4F46E5;
+  --color-secondary: #A5B4FC;
+  --color-text: #111827;
+  --color-text-secondary: #6B7280;
+  --color-error: #EF4444;
+  --color-income: #10B981;
+  --color-expense: #F59E0B;
+  --color-border: ;
+
+  --border-radius-xs: 3px;
+  --border-radius-s: 6px;
+  --border-radius-m: 8px;
+  --border-radius-l: 12px;
+
+  --input-padding-l: 12px;
+
+  --border: 2px solid var(--color-secondary);
+
+  --shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  --shadow-inset: inset 0 0 20px 2px rgba(0, 0, 0, 0.99);
+
+  --font-family-base: "Montserrat", sans-serif;
+
+  --container-width: 1200px;
+  --container-padding-x: 20px;
+
+  --transition-duration: 0.2s;
+}

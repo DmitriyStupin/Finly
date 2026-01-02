@@ -1,0 +1,16 @@
+@use "/src/styles/helpers/media.scss" as *;
+
+.sidebarMenuItem {
+  border-radius: 0 var(--border-radius-m) var(--border-radius-m) 0;
+  transition: var(--transition-duration);
+
+  &:not(&Active) {
+    @include hover {
+      background: var(--color-bg);
+    }
+  }
+
+  &Active {
+    background: var(--color-secondary);
+  }
+}

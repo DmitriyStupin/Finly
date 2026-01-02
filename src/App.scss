@@ -1,0 +1,11 @@
+.app {
+  background: var(--color-card-bg);
+  display: flex;
+  min-height: 100vh;
+
+  &__content {
+    padding: 20px;
+    background-color: var(--color-bg);
+    flex: 1;
+  }
+}
