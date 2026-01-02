@@ -1,13 +1,13 @@
 import clsx from 'clsx';
 import styles from './SidebarMenuItem.module.scss';
 import SidebarMenuLink from '../SidebarMenuLink';
-import type { SidebarMenuItemType } from '../../../types/sidebar.ts';
+import type { SidebarMenuItemType } from '../../../shared/types/sidebar.ts';
 import { useLocation } from 'react-router-dom';
 
 type Props = SidebarMenuItemType;
 
 const SidebarMenuItem = (props: Props) => {
-  const { title, path, iconHref } = props;
+  const { title, path, icon } = props;
 
   const location = useLocation().pathname;
 
@@ -18,7 +18,7 @@ const SidebarMenuItem = (props: Props) => {
         path === location ? styles.sidebarMenuItemActive : ''
       )}
     >
-      <SidebarMenuLink title={title} path={path} iconHref={iconHref} />
+      <SidebarMenuLink title={title} path={path} iconHref={icon} />
     </li>
   );
 };
