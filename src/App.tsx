@@ -1,10 +1,15 @@
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import './App.scss';
 import './styles';
+import { routes } from './shared/config/routes.ts';
 import Sidebar from './components/Sidebar';
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import TransactionsPage from './pages/TransactionsPage';
-import { routes } from './shared/config/routes.ts';
+import AboutPage from './pages/AboutPage';
+import AccountsPage from './pages/AccountsPage';
+import CategoriesPage from './pages/CategoriesPage';
+import SettingsPage from './pages/SettingsPage';
+import StatisticsPage from './pages/StatisticsPage';
 
 function App() {
   return (
@@ -15,6 +20,11 @@ function App() {
           <Routes>
             <Route path={routes.home} element={<HomePage />} />
             <Route path={routes.transactions} element={<TransactionsPage />} />
+            <Route path={routes.about} element={<AboutPage />} />
+            <Route path={routes.accounts} element={<AccountsPage />} />
+            <Route path={routes.categories} element={<CategoriesPage />} />
+            <Route path={routes.settings} element={<SettingsPage />} />
+            <Route path={routes.statistics} element={<StatisticsPage />} />
           </Routes>
         </div>
       </div>
