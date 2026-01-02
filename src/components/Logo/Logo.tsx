@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import LogoIcon from '/src/assets/images/logo.svg';
 
 type Props = {
   path?: string;
@@ -9,13 +10,7 @@ const Logo = (props: Props) => {
 
   return (
     <Link to={path}>
-      <img
-        src="/src/assets/images/logo.svg"
-        width={156}
-        height={48}
-        loading="lazy"
-        alt={'logo'}
-      />
+      <img src={LogoIcon} width={156} height={48} loading="lazy" alt={'logo'} />
     </Link>
   );
 };
