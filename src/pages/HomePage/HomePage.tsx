@@ -1,8 +1,12 @@
+import TransactionsSection from '../../sections/TransactionsSection';
+import clsx from 'clsx';
+import styles from './HomePage.module.scss';
+
 const HomePage = () => {
   return (
-    <div className={'container'}>
+    <div className={clsx(styles.homePageInner, 'container')}>
       <h1>Главная страница</h1>
-      <div>adfaddfaf</div>
+      <TransactionsSection />
     </div>
   );
 };

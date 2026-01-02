@@ -1,10 +1,12 @@
+@use '/src/styles/helpers/functions.scss' as *;
+
 .app {
   background: var(--color-card-bg);
   display: flex;
   min-height: 100vh;
 
   &__content {
-    padding-block: 20px;
+    padding-block: fluid(40, 20);
     background-color: var(--color-bg);
     flex: 1;
   }

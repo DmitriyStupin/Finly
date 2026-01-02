@@ -1,0 +1,38 @@
+@use "/src/styles/helpers/media.scss" as *;
+
+.transactionsCard {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  width: 100%;
+  max-width: 350px;
+  border: var(--border);
+  background: var(--color-card-bg);
+  border-radius: var(--border-radius-l);
+  box-shadow: var(--shadow);
+  transition: var(--transition-duration);
+  cursor: pointer;
+
+  @include hover {
+    opacity: 0.85;
+  }
+
+  &--income {
+    background: var(--color-income);
+  }
+
+  &--expense {
+    background: var(--color-expense);
+  }
+
+  &Title {
+    font-weight: 400;
+    font-size: 16px;
+  }
+
+  &Amount {
+    font-weight: 700;
+    font-size: 32px;
+  }
+}
