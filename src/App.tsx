@@ -10,25 +10,31 @@ import AccountsPage from './pages/AccountsPage';
 import CategoriesPage from './pages/CategoriesPage';
 import SettingsPage from './pages/SettingsPage';
 import StatisticsPage from './pages/StatisticsPage';
+import { TransactionsProvider } from './context/TransactionsContext.tsx';
 
 function App() {
   return (
-    <Router>
-      <div className={'app'}>
-        <Sidebar />
-        <div className="app__content">
-          <Routes>
-            <Route path={routes.home} element={<HomePage />} />
-            <Route path={routes.transactions} element={<TransactionsPage />} />
-            <Route path={routes.about} element={<AboutPage />} />
-            <Route path={routes.accounts} element={<AccountsPage />} />
-            <Route path={routes.categories} element={<CategoriesPage />} />
-            <Route path={routes.settings} element={<SettingsPage />} />
-            <Route path={routes.statistics} element={<StatisticsPage />} />
-          </Routes>
+    <TransactionsProvider>
+      <Router>
+        <div className={'app'}>
+          <Sidebar />
+          <div className="app__content">
+            <Routes>
+              <Route path={routes.home} element={<HomePage />} />
+              <Route
+                path={routes.transactions}
+                element={<TransactionsPage />}
+              />
+              <Route path={routes.about} element={<AboutPage />} />
+              <Route path={routes.accounts} element={<AccountsPage />} />
+              <Route path={routes.categories} element={<CategoriesPage />} />
+              <Route path={routes.settings} element={<SettingsPage />} />
+              <Route path={routes.statistics} element={<StatisticsPage />} />
+            </Routes>
+          </div>
         </div>
-      </div>
-    </Router>
+      </Router>
+    </TransactionsProvider>
   );
 }
 
