@@ -5,17 +5,25 @@ import clsx from 'clsx';
 type Props = {
   className?: string;
   type?: 'button' | 'submit' | 'reset' | undefined;
+  variant?: 'primary' | 'gray';
   onClick?: () => void;
   icon?: ReactNode;
   children: ReactNode;
 };
 
 const Button = (props: Props) => {
-  const { className = '', type = 'button', onClick, icon, children } = props;
+  const {
+    className = '',
+    type = 'button',
+    variant = 'primary',
+    onClick,
+    icon,
+    children,
+  } = props;
 
   return (
     <button
-      className={clsx(styles.button, className)}
+      className={clsx(styles.button, styles[`button--${variant}`], className)}
       onClick={onClick}
       type={type}
     >

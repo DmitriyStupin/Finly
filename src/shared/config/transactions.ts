@@ -1,20 +1,17 @@
-import type { Transaction } from '../types/transactions.ts';
+import type { OperationTypeItem, Transaction } from '../types/transactions.ts';
 
-export const transactions: Transaction[] = [
+export const transactions: Transaction[] = [];
+
+export const operationTypes: OperationTypeItem[] = [
   {
     id: 1,
-    title: 'Зарплата',
-    amount: 84000,
-    type: 'income',
-    category: 'Работа',
-    date: '01.01.2025',
+    value: 'income',
+    label: 'Доход',
   },
+
   {
     id: 2,
-    title: 'Продукты',
-    amount: 4200,
-    type: 'expense',
-    category: 'Еда',
-    date: '01.02.2025',
+    value: 'expense',
+    label: 'Расход',
   },
 ];

@@ -1,0 +1,23 @@
+.transactionForm {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  &Group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    &Buttons {
+      display: flex;
+      gap: 10px;
+    }
+  }
+
+  &Input {
+    background: none;
+    border: var(--border);
+    border-radius: var(--border-radius-s);
+    padding: 10px;
+  }
+}

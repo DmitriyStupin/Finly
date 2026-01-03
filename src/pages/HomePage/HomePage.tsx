@@ -7,9 +7,12 @@ import { useState } from 'react';
 import TransactionForm from '../../components/Transactions/TransactionForm';
 import Button from '../../components/Button';
 import AddIcon from '/src/assets/icons/add.svg?react';
+import { transactions as initialTransactions } from '../../shared/config/transactions.ts';
+import type { Transaction } from '../../shared/types/transactions.ts';
 
 const HomePage = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);
+  const [transactions, setTransactions] = useState(initialTransactions);
 
   const openModal = () => {
     setIsOpenModal(true);
@@ -17,6 +20,10 @@ const HomePage = () => {
 
   const closeModal = () => {
     setIsOpenModal(false);
+  };
+
+  const addTransaction = (newTransaction: Transaction) => {
+    setTransactions([newTransaction, ...transactions]);
   };
 
   return (
@@ -31,9 +38,9 @@ const HomePage = () => {
       >
         Добавить операцию
       </Button>
-      <TransactionsListSection />
+      <TransactionsListSection transactions={transactions} />
       <Modal isOpen={isOpenModal} onClose={closeModal}>
-        <TransactionForm />
+        <TransactionForm onAddTransaction={addTransaction} />
       </Modal>
     </div>
   );

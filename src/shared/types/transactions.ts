@@ -11,9 +11,15 @@ export type TransactionsItem = {
 
 export type Transaction = {
   id: number;
-  title: string;
+  // title: string;
   amount: number;
   type: TransactionType;
   category: string;
   date: string;
+};
+
+export type OperationTypeItem = {
+  id: number;
+  value: TransactionType;
+  label: string;
 };

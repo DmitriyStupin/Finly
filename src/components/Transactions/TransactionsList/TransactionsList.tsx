@@ -1,8 +1,14 @@
-import { transactions } from '../../../shared/config/transactions.ts';
 import styles from './TransactionsList.module.scss';
 import clsx from 'clsx';
+import type { Transaction } from '../../../shared/types/transactions.ts';
 
-const TransactionsList = () => {
+type Props = {
+  transactions: Transaction[];
+};
+
+const TransactionsList = (props: Props) => {
+  const { transactions } = props;
+
   return (
     <table className={styles.transactionsList}>
       <thead className={styles.transactionsListHeader}>

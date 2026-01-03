@@ -9,6 +9,10 @@
   border: none;
   border-radius: var(--border-radius-s);
 
+  &--gray {
+    background: var(--color-border);
+  }
+
   @include hover {
     opacity: 0.8;
   }
