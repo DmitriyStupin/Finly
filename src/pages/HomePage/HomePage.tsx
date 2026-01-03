@@ -4,6 +4,9 @@ import styles from './HomePage.module.scss';
 import TransactionsListSection from '../../sections/TransactionsListSection';
 import Modal from '../../components/Modal';
 import { useState } from 'react';
+import TransactionForm from '../../components/Transactions/TransactionForm';
+import Button from '../../components/Button';
+import AddIcon from '/src/assets/icons/add.svg?react';
 
 const HomePage = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);
@@ -20,14 +23,17 @@ const HomePage = () => {
     <div className={clsx(styles.homePageInner, 'container')}>
       <h1>Главная страница</h1>
       <TransactionsCardsSection />
+      <Button
+        className={styles.homePageAddButton}
+        onClick={openModal}
+        type={'button'}
+        icon={<AddIcon />}
+      >
+        Добавить операцию
+      </Button>
       <TransactionsListSection />
-      <button onClick={openModal} type="button">
-        Открыть модальное окно
-      </button>
       <Modal isOpen={isOpenModal} onClose={closeModal}>
-        ajkk;aldsask;djaklssss ajkk;aldsask;djaklssss
-        ajkk;aldsask;djaklssssajkk;aldsask;djaklssss ajkk;aldsask;djaklssss
-        ajkk;aldsask;djaklssss ajkk;aldsask;djaklssss ajkk;aldsask;djaklssss
+        <TransactionForm />
       </Modal>
     </div>
   );

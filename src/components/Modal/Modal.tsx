@@ -1,5 +1,5 @@
 import styles from './Modal.module.scss';
-import type { ReactNode } from 'react';
+import { type ReactNode, useEffect } from 'react';
 
 type Props = {
   isOpen: boolean;
@@ -9,6 +9,20 @@ type Props = {
 
 const Modal = (props: Props) => {
   const { isOpen = false, onClose, children } = props;
+
+  useEffect(() => {
+    const handleEscape = (event: { key: string }) => {
+      if (event.key === 'Escape') {
+        onClose();
+      }
+    };
+
+    document.addEventListener('keydown', handleEscape);
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+    };
+  }, [onClose]);
 
   if (!isOpen) return null;
 

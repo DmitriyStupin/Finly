@@ -1,0 +1,21 @@
+@use "/src/styles/helpers/media.scss" as *;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  background: var(--color-secondary);
+  border: none;
+  border-radius: var(--border-radius-s);
+
+  @include hover {
+    opacity: 0.8;
+  }
+
+  &Icon svg {
+    display: flex;
+    width: 24px;
+    height: 24px;
+  }
+}
