@@ -1,5 +1,6 @@
 import { transactions } from '../../../shared/config/transactions.ts';
 import styles from './TransactionsList.module.scss';
+import clsx from 'clsx';
 
 const TransactionsList = () => {
   return (
@@ -18,7 +19,15 @@ const TransactionsList = () => {
             <td className={styles.transactionsListCell}>
               {transaction.category}
             </td>
-            <td className={styles.transactionsListCell}>
+            <td
+              className={clsx(
+                styles.transactionsListCell,
+                transaction.type === 'income'
+                  ? styles.transactionsListCellIncome
+                  : styles.transactionsListCellExpense
+              )}
+            >
+              {transaction.type === 'income' ? '+' : '-'}
               {transaction.amount} ₽
             </td>
           </tr>

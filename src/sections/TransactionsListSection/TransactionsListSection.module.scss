@@ -1,5 +1,16 @@
+@use '/src/styles/helpers/functions.scss' as *;
+
 .transactionsListSection {
   display: flex;
   flex-direction: column;
   gap: 10px;
+
+  &Header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &Title {
+    font-size: fluid(20, 16);
+  }
 }

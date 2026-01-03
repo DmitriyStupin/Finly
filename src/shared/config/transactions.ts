@@ -7,7 +7,7 @@ export const transactions: Transaction[] = [
     amount: 84000,
     type: 'income',
     category: 'Работа',
-    date: '2025-01-01',
+    date: '01.01.2025',
   },
   {
     id: 2,
@@ -15,6 +15,6 @@ export const transactions: Transaction[] = [
     amount: 4200,
     type: 'expense',
     category: 'Еда',
-    date: '2025-01-02',
+    date: '01.02.2025',
   },
 ];

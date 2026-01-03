@@ -1,0 +1,22 @@
+@use "/src/styles/helpers/media.scss" as *;
+@use "/src/styles/helpers/functions.scss" as *;
+
+.moreLink {
+  display: flex;
+  align-items: center;
+  font-size: fluid(16, 14);
+  color: var(--color-primary);
+
+  @include hover {
+    color: var(--color-secondary);
+  }
+
+  &Icon {
+    width: 24px;
+    height: 24px;
+
+    path {
+      fill: currentColor;
+    }
+  }
+}
