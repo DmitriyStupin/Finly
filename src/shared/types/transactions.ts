@@ -5,7 +5,7 @@ export type TransactionType = 'income' | 'expense';
 export type TransactionsItem = {
   id: number;
   title: string;
-  amount: string;
+  amount: number;
   variant: TransactionsCardVariant;
 };
 

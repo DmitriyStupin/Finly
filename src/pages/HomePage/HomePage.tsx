@@ -35,7 +35,10 @@ const HomePage = () => {
       </Button>
       <TransactionsListSection transactions={transactions} />
       <Modal isOpen={isOpenModal} onClose={closeModal}>
-        <TransactionForm onAddTransaction={addTransaction} />
+        <TransactionForm
+          onClose={closeModal}
+          onAddTransaction={addTransaction}
+        />
       </Modal>
     </div>
   );

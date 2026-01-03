@@ -20,4 +20,8 @@
     border-radius: var(--border-radius-s);
     padding: 10px;
   }
+
+  &Error {
+    color: var(--color-error);
+  }
 }

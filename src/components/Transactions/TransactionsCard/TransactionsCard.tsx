@@ -4,7 +4,7 @@ import type { TransactionsCardVariant } from '../../../shared/types/transactions
 
 type Props = {
   title: string;
-  amount: string;
+  amount: number;
   variant: TransactionsCardVariant;
 };
 
