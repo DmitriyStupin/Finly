@@ -3,6 +3,7 @@ import Button from '../../Button';
 import { useState } from 'react';
 import { operationTypes } from '../../../shared/config/transactions.ts';
 import type { Transaction } from '../../../shared/types/transactions.ts';
+import { initialCategories } from '../../../shared/config/categories.ts';
 
 type Props = {
   onAddTransaction: (transaction: Transaction) => void;
@@ -27,7 +28,7 @@ const TransactionForm = (props: Props) => {
   const validate = () => {
     const newErrors: FormErrors = {};
 
-    if (!amount || Number(amount) < 0) {
+    if (!amount || Number(amount) <= 0) {
       newErrors.amount = 'Введите сумму больше 0';
     }
 
@@ -91,7 +92,7 @@ const TransactionForm = (props: Props) => {
             e.preventDefault();
           }
         }}
-        min={0}
+        min={1}
         value={amount}
         onChange={(event) => setAmount(event.target.value)}
         id="amount"
@@ -100,7 +101,12 @@ const TransactionForm = (props: Props) => {
       {errors.amount && (
         <span className={styles.transactionFormError}>{errors.amount}</span>
       )}
-      <input
+      <select name="" id="">
+        {initialCategories.map((initialCategory) => (
+          <option value={initialCategory.title}>{initialCategory.title}</option>
+        ))}
+      </select>
+      {/*<input
         className={styles.transactionFormInput}
         type={'text'}
         placeholder={'Категория'}
@@ -108,7 +114,7 @@ const TransactionForm = (props: Props) => {
         onChange={(event) => setCategory(event.target.value)}
         id="category"
         name="category"
-      />
+      />*/}
       {errors.category && (
         <span className={styles.transactionFormError}>{errors.category}</span>
       )}
