@@ -3,7 +3,8 @@ import Button from '../../Button';
 import { useState } from 'react';
 import { operationTypes } from '../../../shared/config/transactions.ts';
 import type { Transaction } from '../../../shared/types/transactions.ts';
-import { initialCategories } from '../../../shared/config/categories.ts';
+import { useCategories } from '../../../hooks/useCategories.ts';
+import CategoryBadge from '../../Category/CategoryBadge';
 
 type Props = {
   onAddTransaction: (transaction: Transaction) => void;
@@ -17,6 +18,7 @@ type FormErrors = {
 
 const TransactionForm = (props: Props) => {
   const { onClose, onAddTransaction } = props;
+  const { categories } = useCategories();
 
   const [typeOperation, setTypeOperation] = useState<'income' | 'expense'>(
     'income'
@@ -56,6 +58,8 @@ const TransactionForm = (props: Props) => {
     onClose();
   };
 
+  const isCategoryActive = (title: string) => category === title;
+
   return (
     <form
       className={styles.transactionForm}
@@ -75,7 +79,10 @@ const TransactionForm = (props: Props) => {
               variant={
                 operationType.value === typeOperation ? 'primary' : 'gray'
               }
-              onClick={() => setTypeOperation(operationType.value)}
+              onClick={() => {
+                setTypeOperation(operationType.value);
+                setCategory('');
+              }}
             >
               {operationType.label}
             </Button>
@@ -101,20 +108,18 @@ const TransactionForm = (props: Props) => {
       {errors.amount && (
         <span className={styles.transactionFormError}>{errors.amount}</span>
       )}
-      <select name="" id="">
-        {initialCategories.map((initialCategory) => (
-          <option value={initialCategory.title}>{initialCategory.title}</option>
-        ))}
-      </select>
-      {/*<input
-        className={styles.transactionFormInput}
-        type={'text'}
-        placeholder={'Категория'}
-        value={category}
-        onChange={(event) => setCategory(event.target.value)}
-        id="category"
-        name="category"
-      />*/}
+      <div className={styles.transactionFormCategoriesList}>
+        {categories
+          .filter((category) => category.type === typeOperation)
+          .map((category) => (
+            <CategoryBadge
+              key={category.id}
+              onClick={() => setCategory(category.title)}
+              title={category.title}
+              isActive={isCategoryActive(category.title)}
+            />
+          ))}
+      </div>
       {errors.category && (
         <span className={styles.transactionFormError}>{errors.category}</span>
       )}

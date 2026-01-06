@@ -19,7 +19,14 @@ const TransactionsCard = (props: Props) => {
       )}
     >
       <h2 className={styles.transactionsCardTitle}>{title}</h2>
-      <span className={styles.transactionsCardAmount}>{amount}₽</span>
+      <span className={styles.transactionsCardAmount}>
+        {variant === 'income' && amount !== 0
+          ? '+'
+          : variant === 'expense' && amount !== 0
+            ? '-'
+            : ''}
+        {amount}₽
+      </span>
     </div>
   );
 };

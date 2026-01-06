@@ -1,0 +1,17 @@
+.categoryBadge {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: var(--color-bg);
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+
+  &:hover {
+    background: var(--color-secondary);
+  }
+
+  &Active {
+    background: var(--color-primary);
+    color: #fff;
+  }
+}
