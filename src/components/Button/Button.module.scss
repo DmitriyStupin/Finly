@@ -1,10 +1,11 @@
 @use "/src/styles/helpers/media.scss" as *;
+@use "/src/styles/helpers/functions.scss" as *;
 
 .button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 15px;
+  padding: fluid(16, 8);
   background: var(--color-secondary);
   border: none;
   border-radius: var(--border-radius-s);

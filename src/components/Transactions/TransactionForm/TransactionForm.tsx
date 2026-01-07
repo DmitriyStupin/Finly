@@ -5,6 +5,7 @@ import { operationTypes } from '../../../shared/config/transactions.ts';
 import type { Transaction } from '../../../shared/types/transactions.ts';
 import { useCategories } from '../../../hooks/useCategories.ts';
 import CategoryBadge from '../../Category/CategoryBadge';
+import { categoryIcons } from '../../../shared/config/categoryOptions.ts';
 
 type Props = {
   onAddTransaction: (transaction: Transaction) => void;
@@ -18,6 +19,7 @@ type FormErrors = {
 
 const TransactionForm = (props: Props) => {
   const { onClose, onAddTransaction } = props;
+
   const { categories } = useCategories();
 
   const [typeOperation, setTypeOperation] = useState<'income' | 'expense'>(
@@ -59,6 +61,10 @@ const TransactionForm = (props: Props) => {
   };
 
   const isCategoryActive = (title: string) => category === title;
+
+  const iconMap = Object.fromEntries(
+    categoryIcons.map(({ id, Icon }) => [id, Icon])
+  );
 
   return (
     <form
@@ -114,8 +120,16 @@ const TransactionForm = (props: Props) => {
           .map((category) => (
             <CategoryBadge
               key={category.id}
+              style={
+                category.color
+                  ? {
+                      backgroundColor: category.color,
+                    }
+                  : undefined
+              }
               onClick={() => setCategory(category.title)}
               title={category.title}
+              Icon={iconMap[category.icon]}
               isActive={isCategoryActive(category.title)}
             />
           ))}

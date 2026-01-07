@@ -1,17 +1,25 @@
 .categoryBadge {
+  color: var(--color-card-bg);
+  gap: 5px;
   padding: 8px 12px;
-  border-radius: 999px;
-  background: var(--color-bg);
+  border-radius: var(--border-radius-l);
   border: none;
   cursor: pointer;
-  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+  }
 
   &:hover {
-    background: var(--color-secondary);
+    opacity: 0.7;
   }
 
   &Active {
-    background: var(--color-primary);
-    color: #fff;
+    transform: scale(1.05);
   }
 }

@@ -24,4 +24,9 @@
   &Error {
     color: var(--color-error);
   }
+
+  &CategoriesList {
+    display: flex;
+    gap: 10px;
+  }
 }

@@ -4,4 +4,6 @@ export type Category = {
   id: number;
   title: string;
   type: CategoryType;
+  color: string;
+  icon: string;
 };

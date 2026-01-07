@@ -1,5 +1,4 @@
 import { createContext, type ReactNode, useState } from 'react';
-import { initialCategories } from '../shared/config/categories.ts';
 import type { Category } from '../shared/types/category.ts';
 
 type Props = {
@@ -19,7 +18,7 @@ export const CategoriesContext = createContext<CategoriesContextType | null>(
 export const CategoriesProvider = (props: Props) => {
   const { children } = props;
 
-  const [categories, setCategories] = useState<Category[]>(initialCategories);
+  const [categories, setCategories] = useState<Category[]>([]);
 
   const addCategory = (newCategory: Category) => {
     setCategories((prev) => [newCategory, ...prev]);
