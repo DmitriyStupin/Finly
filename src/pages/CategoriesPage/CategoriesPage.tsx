@@ -21,7 +21,7 @@ const CategoriesPage = () => {
 
   return (
     <div className={clsx(styles.categoriesPageInner, 'container')}>
-      <h1>Главная страница</h1>
+      <h1>Категории</h1>
       <Button
         className={styles.categoriesPageAddButton}
         onClick={openModal}

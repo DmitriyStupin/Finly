@@ -2,13 +2,18 @@ import styles from './TransactionForm.module.scss';
 import Button from '../../Button';
 import { useState } from 'react';
 import { operationTypes } from '../../../shared/config/transactions.ts';
-import type { Transaction } from '../../../shared/types/transactions.ts';
 import { useCategories } from '../../../hooks/useCategories.ts';
 import CategoryBadge from '../../Category/CategoryBadge';
 import { categoryIcons } from '../../../shared/config/categoryOptions.ts';
 
 type Props = {
-  onAddTransaction: (transaction: Transaction) => void;
+  onAddTransaction: (transaction: {
+    id: number;
+    amount: number;
+    type: 'income' | 'expense';
+    category: string;
+    date: string;
+  }) => void;
   onClose: () => void;
 };
 
