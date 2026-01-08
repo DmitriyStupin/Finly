@@ -1,18 +1,21 @@
 .categoryBadge {
-  color: var(--color-card-bg);
+  display: flex;
+  align-items: center;
   gap: 5px;
   padding: 8px 12px;
   border-radius: var(--border-radius-l);
   border: none;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  color: var(--color-card-bg);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   & svg {
     width: 20px;
     height: 20px;
     fill: currentColor;
+    flex-shrink: 0;
   }
 
   &:hover {

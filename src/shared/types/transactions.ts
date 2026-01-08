@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 export type TransactionsCardVariant = 'balance' | 'income' | 'expense';
 
 export type TransactionType = 'income' | 'expense';
@@ -13,10 +11,8 @@ export type TransactionsItem = {
 
 export type Transaction = {
   id: number;
-  // title: string;
   amount: number;
   type: TransactionType;
-  icon: React.ComponentType | string;
   category: string;
   date: string;
 };

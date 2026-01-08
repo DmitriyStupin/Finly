@@ -13,8 +13,8 @@ type Props = {
     id: number;
     title: string;
     type: 'income' | 'expense';
-    color: string | null;
-    icon: string | null;
+    color: string;
+    icon: string;
   }) => void;
 
   onClose: () => void;
@@ -25,8 +25,8 @@ const CategoryForm = (props: Props) => {
 
   const [title, setTitle] = useState('');
   const [type, setType] = useState<'income' | 'expense'>('income');
-  const [color, setColor] = useState<string | null>(null);
-  const [icon, setIcon] = useState<string | null>(null);
+  const [color, setColor] = useState<string>('');
+  const [icon, setIcon] = useState<string>('');
 
   const handleSubmit = () => {
     const newCategory = {
