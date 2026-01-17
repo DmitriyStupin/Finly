@@ -5,7 +5,7 @@ import clsx from 'clsx';
 type Props = {
   className?: string;
   type?: 'button' | 'submit' | 'reset' | undefined;
-  variant?: 'primary' | 'gray';
+  variant?: 'primary' | 'gray' | 'red';
   onClick?: () => void;
   icon?: ReactNode;
   children: ReactNode;

@@ -9,15 +9,18 @@ import { useCategories } from '../../hooks/useCategories.ts';
 import { operationTypes } from '../../shared/config/transactions.ts';
 import CategoryBadge from '../../components/Category/CategoryBadge';
 import { categoryIcons } from '../../shared/config/categoryOptions.ts';
+import type { Category } from '../../shared/types/category.ts';
 
 const CategoriesPage = () => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [typeOperation, setTypeOperation] = useState<'income' | 'expense'>(
     'income'
   );
-  const [category, setCategory] = useState('');
+  // const [category, setCategory] = useState('');
+  const [editingCategory, setEditingCategory] = useState<Category | null>(null);
 
-  const { categories, addCategory, deleteCategory } = useCategories();
+  const { categories, addCategory, updateCategory, deleteCategory } =
+    useCategories();
 
   // const isCategoryActive = (title: string) => category === title;
 
@@ -31,6 +34,7 @@ const CategoriesPage = () => {
 
   const closeModal = () => {
     setIsOpenModal(false);
+    setEditingCategory(null);
   };
 
   const filteredCategories = categories.filter(
@@ -66,7 +70,10 @@ const CategoriesPage = () => {
                     }
                   : undefined
               }
-              onClick={() => setCategory(category.title)}
+              onClick={() => {
+                setEditingCategory(category);
+                openModal();
+              }}
               title={category.title}
               Icon={iconMap[category.icon]}
             />
@@ -86,6 +93,9 @@ const CategoriesPage = () => {
       <Modal isOpen={isOpenModal} onClose={closeModal}>
         <CategoryForm
           onAddCategory={addCategory}
+          onUpdateCategory={updateCategory}
+          onDeleteCategory={deleteCategory}
+          initialCategory={editingCategory ?? undefined}
           onClose={closeModal}
           typeOperationOnPage={typeOperation}
         />

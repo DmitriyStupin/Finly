@@ -1,15 +1,27 @@
 import styles from './Sidebar.module.scss';
 import Logo from '../Logo';
 import SidebarMenu from './SidebarMenu';
+import clsx from 'clsx';
 
-const Sidebar = () => {
+type Props = {
+  isOpen?: boolean;
+  onClose?: () => void;
+};
+
+const Sidebar = (props: Props) => {
+  const { isOpen, onClose } = props;
+
   return (
-    <div className={styles.sidebar}>
-      <div className={styles.sidebarLogoWrapper}>
-        <Logo />
+    <>
+      <div className={clsx(styles.sidebar, isOpen && styles.sidebarOpen)}>
+        <div className={styles.sidebarLogoWrapper}>
+          <Logo />
+        </div>
+        <SidebarMenu onClose={onClose} />
       </div>
-      <SidebarMenu />
-    </div>
+
+      {isOpen && <div className={styles.overlay} onClick={onClose} />}
+    </>
   );
 };
 

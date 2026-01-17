@@ -1,9 +1,14 @@
 @use '/src/styles/helpers/functions.scss' as *;
+@use '/src/styles/helpers/media.scss' as *;
 
 .app {
   background: var(--color-card-bg);
   display: flex;
   min-height: 100vh;
+
+  @include tablet {
+    flex-direction: column;
+  }
 
   &__content {
     padding-block: fluid(40, 20);

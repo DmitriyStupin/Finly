@@ -8,7 +8,8 @@ type Props = {
 type CategoriesContextType = {
   categories: Category[];
   addCategory: (category: Category) => void;
-  deleteCategory: (id: number) => void;
+  updateCategory: (category: Category) => void;
+  deleteCategory: (id: number | undefined) => void;
 };
 
 export const CategoriesContext = createContext<CategoriesContextType | null>(
@@ -24,7 +25,15 @@ export const CategoriesProvider = (props: Props) => {
     setCategories((prev) => [newCategory, ...prev]);
   };
 
-  const deleteCategory = (id: number) => {
+  const updateCategory = (updatedCategory: Category) => {
+    setCategories((prev) =>
+      prev.map((category) =>
+        category.id === updatedCategory.id ? updatedCategory : category
+      )
+    );
+  };
+
+  const deleteCategory = (id: number | undefined) => {
     setCategories((prev) => prev.filter((category) => category.id !== id));
   };
 
@@ -33,6 +42,7 @@ export const CategoriesProvider = (props: Props) => {
       value={{
         categories,
         addCategory,
+        updateCategory,
         deleteCategory,
       }}
     >

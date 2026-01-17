@@ -12,14 +12,22 @@ import SettingsPage from './pages/SettingsPage';
 import StatisticsPage from './pages/StatisticsPage';
 import { TransactionsProvider } from './context/TransactionsContext.tsx';
 import { CategoriesProvider } from './context/CategoriesContext.tsx';
+import { useState } from 'react';
+import Header from './components/Header';
 
 function App() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
   return (
     <CategoriesProvider>
       <TransactionsProvider>
         <Router>
           <div className={'app'}>
-            <Sidebar />
+            <Header onClick={() => setIsSidebarOpen(true)} />
+            <Sidebar
+              isOpen={isSidebarOpen}
+              onClose={() => setIsSidebarOpen(false)}
+            />
             <div className="app__content">
               <Routes>
                 <Route path={routes.home} element={<HomePage />} />

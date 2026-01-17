@@ -5,15 +5,10 @@ import { operationTypes } from '../../../shared/config/transactions.ts';
 import { useCategories } from '../../../hooks/useCategories.ts';
 import CategoryBadge from '../../Category/CategoryBadge';
 import { categoryIcons } from '../../../shared/config/categoryOptions.ts';
+import type { Transaction } from '../../../shared/types/transactions.ts';
 
 type Props = {
-  onAddTransaction: (transaction: {
-    id: number;
-    amount: number;
-    type: 'income' | 'expense';
-    category: string;
-    date: string;
-  }) => void;
+  onAddTransaction: (transaction: Transaction) => void;
   onClose: () => void;
 };
 
@@ -31,7 +26,8 @@ const TransactionForm = (props: Props) => {
     'income'
   );
   const [amount, setAmount] = useState('');
-  const [category, setCategory] = useState('');
+  // const [category, setCategory] = useState('');
+  const [categoryId, setCategoryId] = useState<number | null>(null);
   const [errors, setErrors] = useState<FormErrors>({});
 
   const validate = () => {
@@ -41,7 +37,7 @@ const TransactionForm = (props: Props) => {
       newErrors.amount = 'Введите сумму больше 0';
     }
 
-    if (!category.trim()) {
+    if (categoryId === null) {
       newErrors.category = 'Введите категорию';
     }
 
@@ -57,7 +53,7 @@ const TransactionForm = (props: Props) => {
       id: Date.now(),
       amount: Number(amount),
       type: typeOperation,
-      category: category,
+      categoryId: categoryId!,
       date: new Date().toLocaleDateString(),
     };
 
@@ -65,7 +61,7 @@ const TransactionForm = (props: Props) => {
     onClose();
   };
 
-  const isCategoryActive = (title: string) => category === title;
+  const isCategoryActive = (id: number) => categoryId === id;
 
   const iconMap = Object.fromEntries(
     categoryIcons.map(({ id, Icon }) => [id, Icon])
@@ -92,7 +88,7 @@ const TransactionForm = (props: Props) => {
               }
               onClick={() => {
                 setTypeOperation(operationType.value);
-                setCategory('');
+                setCategoryId(null);
               }}
             >
               {operationType.label}
@@ -132,10 +128,10 @@ const TransactionForm = (props: Props) => {
                     }
                   : undefined
               }
-              onClick={() => setCategory(category.title)}
+              onClick={() => setCategoryId(category.id)}
               title={category.title}
               Icon={iconMap[category.icon]}
-              isActive={isCategoryActive(category.title)}
+              isActive={isCategoryActive(category.id)}
             />
           ))}
       </div>

@@ -29,7 +29,7 @@ const TransactionsList = (props: Props) => {
       <tbody className={styles.transactionsListBody}>
         {transactions.map((transaction) => {
           const category = categories.find(
-            (category) => category.title === transaction.category
+            (category) => category.id === transaction.categoryId
           );
 
           const Icon = category?.icon ? iconMap[category.icon] : null;
@@ -40,7 +40,7 @@ const TransactionsList = (props: Props) => {
               </td>
               <td className={styles.transactionsListCellWithIcon}>
                 {Icon && <Icon />}
-                {transaction.category}
+                {category?.title ?? '-'}
               </td>
               <td
                 className={clsx(

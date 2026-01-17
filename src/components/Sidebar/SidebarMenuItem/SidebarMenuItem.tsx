@@ -4,10 +4,12 @@ import SidebarMenuLink from '../SidebarMenuLink';
 import type { SidebarMenuItemType } from '../../../shared/types/sidebar.ts';
 import { useLocation } from 'react-router-dom';
 
-type Props = SidebarMenuItemType;
+type Props = SidebarMenuItemType & {
+  onClose?: () => void;
+};
 
 const SidebarMenuItem = (props: Props) => {
-  const { title, path, icon } = props;
+  const { title, path, icon, onClose } = props;
 
   const location = useLocation().pathname;
 
@@ -17,6 +19,7 @@ const SidebarMenuItem = (props: Props) => {
         styles.sidebarMenuItem,
         path === location ? styles.sidebarMenuItemActive : ''
       )}
+      onClick={onClose}
     >
       <SidebarMenuLink title={title} path={path} iconHref={icon} />
     </li>
