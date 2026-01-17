@@ -5,7 +5,7 @@ import * as React from 'react';
 
 type Props = {
   title: string;
-  isActive: boolean;
+  isActive?: boolean;
   onClick: () => void;
   style?: CSSProperties;
   Icon: React.ComponentType | string;

@@ -19,7 +19,7 @@ const CategoriesPage = () => {
 
   const { categories, addCategory, deleteCategory } = useCategories();
 
-  const isCategoryActive = (title: string) => category === title;
+  // const isCategoryActive = (title: string) => category === title;
 
   const iconMap = Object.fromEntries(
     categoryIcons.map(({ id, Icon }) => [id, Icon])
@@ -32,6 +32,10 @@ const CategoriesPage = () => {
   const closeModal = () => {
     setIsOpenModal(false);
   };
+
+  const filteredCategories = categories.filter(
+    (category) => category.type === typeOperation
+  );
 
   return (
     <div className={clsx(styles.categoriesPageInner, 'container')}>
@@ -51,9 +55,8 @@ const CategoriesPage = () => {
         ))}
       </div>
       <div className={styles.categoriesPageList}>
-        {categories
-          .filter((category) => category.type === typeOperation)
-          .map((category) => (
+        {filteredCategories.length > 0 ? (
+          filteredCategories.map((category) => (
             <CategoryBadge
               key={category.id}
               style={
@@ -66,9 +69,11 @@ const CategoriesPage = () => {
               onClick={() => setCategory(category.title)}
               title={category.title}
               Icon={iconMap[category.icon]}
-              isActive={isCategoryActive(category.title)}
             />
-          ))}
+          ))
+        ) : (
+          <h3>Категорий пока что нет! Добавьте категории</h3>
+        )}
       </div>
       <Button
         className={styles.categoriesPageAddButton}
@@ -79,7 +84,11 @@ const CategoriesPage = () => {
         Добавить категорию
       </Button>
       <Modal isOpen={isOpenModal} onClose={closeModal}>
-        <CategoryForm onAddCategory={addCategory} onClose={closeModal} />
+        <CategoryForm
+          onAddCategory={addCategory}
+          onClose={closeModal}
+          typeOperationOnPage={typeOperation}
+        />
       </Modal>
     </div>
   );

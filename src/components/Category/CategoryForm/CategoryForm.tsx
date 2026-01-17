@@ -18,13 +18,14 @@ type Props = {
   }) => void;
 
   onClose: () => void;
+  typeOperationOnPage?: 'income' | 'expense';
 };
 
 const CategoryForm = (props: Props) => {
-  const { onAddCategory, onClose } = props;
+  const { onAddCategory, onClose, typeOperationOnPage = 'income' } = props;
 
   const [title, setTitle] = useState('');
-  const [type, setType] = useState<'income' | 'expense'>('income');
+  const [type, setType] = useState<'income' | 'expense'>(typeOperationOnPage);
   const [color, setColor] = useState<string>('');
   const [icon, setIcon] = useState<string>('');
 
@@ -117,8 +118,6 @@ const CategoryForm = (props: Props) => {
           ))}
         </div>
       </div>
-
-      {/* Кнопка */}
       <Button type="submit" variant="primary">
         Создать категорию
       </Button>
